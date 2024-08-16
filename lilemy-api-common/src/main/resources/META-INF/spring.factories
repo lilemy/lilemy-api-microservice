@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.lilemy.common.config.JsonConfig,\
+  com.lilemy.common.config.MyBatisPlusConfig
