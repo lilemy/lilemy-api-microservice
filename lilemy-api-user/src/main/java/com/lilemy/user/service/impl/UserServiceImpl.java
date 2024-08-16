@@ -10,6 +10,7 @@ import com.lilemy.common.common.ResultCode;
 import com.lilemy.common.constant.CommonConstant;
 import com.lilemy.common.constant.UserConstant;
 import com.lilemy.common.exception.BusinessException;
+import com.lilemy.common.exception.ThrowUtils;
 import com.lilemy.common.utils.SqlUtils;
 import com.lilemy.common.model.dto.user.UserQueryRequest;
 import com.lilemy.common.model.entity.User;
@@ -121,17 +122,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public User getLoginUser() {
         // 先判断是否已登录
-        if (!StpUtil.isLogin()) {
-            throw new BusinessException(ResultCode.NOT_FOUND_ERROR);
-        }
+        ThrowUtils.throwIf(!StpUtil.isLogin(), ResultCode.NOT_LOGIN_ERROR);
         Object userObj = StpUtil.getTokenSession().get(UserConstant.USER_LOGIN_STATE);
         User currentUser = (User) userObj;
-        // 从数据库查询（追求性能的话可以注释，直接走缓存）
-        long userId = currentUser.getId();
-        currentUser = this.getById(userId);
-        if (currentUser == null) {
-            throw new BusinessException(ResultCode.NOT_LOGIN_ERROR);
-        }
+        ThrowUtils.throwIf(currentUser == null, ResultCode.NOT_LOGIN_ERROR);
         return currentUser;
     }
 

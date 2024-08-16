@@ -61,12 +61,6 @@
             <artifactId>sa-token-redis-jackson</artifactId>
             <version>1.38.0</version>
         </dependency>
-        <!--https://doc.xiaominfo.com/docs/quick-start-->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-            <version>4.4.0</version>
-        </dependency>
         <!--https://cn.dubbo.apache.org/zh-cn/-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>

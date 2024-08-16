@@ -45,9 +45,9 @@ knife4j:
       enabled: true
       # 指定版本号(Swagger2|OpenAPI3)
       version: OpenAPI3
-#      # 需要排除的微服务(eg:网关服务)
-#      excluded-services:
-#        - lilemy-api-interface
+      #      # 需要排除的微服务(eg:网关服务)
+      excluded-services:
+        - lilemy-api-interface
 sa-token:
   # token 名称（同时也是 cookie 名称）
   token-name: lilemy-api
@@ -72,3 +72,6 @@ dubbo:
   registry:
     id: nacos-registry
     address: nacos://localhost:8848
+    parameters:
+      namespace: 249a9746-e9da-4473-8ed0-a48b13136ea2
+      group: dubbo

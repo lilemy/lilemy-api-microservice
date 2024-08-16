@@ -55,3 +55,6 @@ dubbo:
   registry:
     id: nacos-registry
     address: nacos://localhost:8848
+    parameters:
+      namespace: 249a9746-e9da-4473-8ed0-a48b13136ea2
+      group: dubbo
